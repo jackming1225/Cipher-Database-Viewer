@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "lite.cipher.sunny.cipherdatabaseviewer"
+        minSdkVersion 22
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'SQL_CIPHER_LICENSE', '"OmNpZDpkZXZAY3JvcGluLmNvbTpwbGF0Zm9ybTo4OmV4cGlyZTpuZXZlcjp2ZXJzaW9uOjE6aG1hYzozMWM1ODgwYTg0MTJhMDdlMjA1ZjZlMTQ2MzM2MzRhMjBlMDlkOGRh"'
+        buildConfigField 'String', 'DB_PASSWORD', '"q/_a!?t:f86mW?MH!dp@"'
+
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+
+    // Third Party Libraries
+    implementation files('libs/android-database-sqlcipher-3.5.9.aar')
+}
